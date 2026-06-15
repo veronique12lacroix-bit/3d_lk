@@ -1,9 +1,6 @@
 # Use official PHP with Apache
 FROM php:8.2-apache
 
-# Install required PHP extensions (json is built-in, remove it)
-RUN docker-php-ext-install curl
-
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
@@ -14,8 +11,7 @@ WORKDIR /var/www/html
 COPY . /var/www/html/
 
 # Create token cache directory with proper permissions
-RUN mkdir -p /var/www/html && \
-    chown -R www-data:www-data /var/www/html && \
+RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html
 
 # Expose port 80

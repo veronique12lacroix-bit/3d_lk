@@ -1,8 +1,8 @@
 # Use official PHP with Apache
 FROM php:8.2-apache
 
-# Install required PHP extensions
-RUN docker-php-ext-install curl json
+# Install required PHP extensions (json is built-in, remove it)
+RUN docker-php-ext-install curl
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
